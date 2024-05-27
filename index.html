@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painter Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painter Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Kanthasami Painter</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>Welcome to My Painting World</h1>
+        <p>
+            <h2>Discover the beauty of creativity.<br>
+            </h2>
+        </p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm Kandhasami, a passionate painter with over 10 years of experience in bringing visions to life on canvas.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="gallery">
+            <img src="1.webp" alt="Painting 1">
+            <img src="4.jpg" alt="Painting 2">
+            <img src="10.jpg" alt="Painting 3">
+        </div>
+    </section>
+
+    <section id="services">
+        <h1>------------Services------------</h1>
+        <ul>
+            <h2>
+                <li>1. patti.</li>
+                <li>2. Fremer.</li>
+                <li>3. color.</li>
+                <li>4. wood paint.</li>
+                <li>5. wood palish.</li>
+            </h2>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" action="" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+
+
+
+
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = new URLSearchParams();
+
+            for (const pair of formData) {
+                data.append(pair[0], pair[1]);
+            }
+
+            fetch('https://script.google.com/macros/s/AKfycbwSR_2Q_01dtcDRStryIjv0NytUffkneHgd6MyisRBfTrF2IQi9lKfdCSq52yTHs3yt-w/exec', { // Replace with your Google Apps Script web app URL
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => response.text())
+                .then(text => {
+                    alert(text);
+                    event.target.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('There was an error submitting your message.');
+                });
+        });
+    </script>
+</body>
+
+</html>
